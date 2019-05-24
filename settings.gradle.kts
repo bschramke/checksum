@@ -2,6 +2,7 @@ pluginManagement {
     repositories {
         jcenter()
         gradlePluginPortal()
+        maven(url="https://dl.bintray.com/jetbrains/kotlin-native-dependencies")
         bintrayKotlinX()
     }
     resolutionStrategy {
