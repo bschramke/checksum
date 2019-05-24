@@ -49,7 +49,7 @@ kotlin {
         }
         val iosMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-ios"))
+                //implementation(kotlin("stdlib-ios"))
             }
         }
     }
