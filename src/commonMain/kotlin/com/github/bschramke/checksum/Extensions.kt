@@ -17,6 +17,13 @@ internal fun reverseBitsImpl(value:Long, length: Int):Long {
 }
 
 infix fun Byte.shl(other: Byte): Byte = (this.toInt() shl other.toInt()).toByte()
+infix fun Long.xor(other: Byte): Long = this xor other.toLong()
 
 fun Int.reverseBits(length: Int):Long = reverseBitsImpl(this.toLong(), length)
 fun Long.reverseBits(length: Int):Long = reverseBitsImpl(this, length)
+
+fun String.toByteArray(): ByteArray {
+    return ByteArray(this.length){
+        this[it].toByte()
+    }
+}

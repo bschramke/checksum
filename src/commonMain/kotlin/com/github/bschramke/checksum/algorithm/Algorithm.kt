@@ -1,9 +1,9 @@
 package com.github.bschramke.checksum.algorithm
 
 abstract class Algorithm(val params: Params) {
-    private val table = calculateLookupTable(params)
+    internal val table = calculateLookupTable(params)
 
-    abstract fun calculate(data: ByteArray, offset: Int, length: Int): Long
+    abstract fun calculate(data: ByteArray, offset: Int = 0, length: Int = data.size): Long
 
     /**
      * @property name The name of the given algorithm.
@@ -35,6 +35,7 @@ abstract class Algorithm(val params: Params) {
         val mask = if (width < 64) (1L shl width)-1 else -0x1L
     }
 
-
-
+    companion object {
+        fun create(params: Params):Algorithm = if(params.reflectedOut) RefOutAlgorithm(params) else NoRefOutAlgorithm(params)
+    }
 }
